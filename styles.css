@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+}
+
+main{
+    width: 85vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+}
+
+article{
+    background-color: blueviolet;
+    width: 15vw;
+    height: 100vh;
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+}
+
+.comprar{
+    display: none;
+}

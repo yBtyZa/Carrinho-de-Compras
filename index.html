@@ -9,13 +9,20 @@
 </head>
 <body>
     <main>
-        <form action="">
+        <form id="form">
             <label for="">Informe o nome ou código do produto</label>
-            <input type="text">
-            <button>Consultar valor</button>
-            <button>Comprar produto</button>
+            <input type="text" id="inputValue">
+            <button id="consultarValorBtn" onclick='consultarValor()'>Consultar valor</button>
+            <button class="comprar" id="comprarProdutoBtn" onclick="comprarProduto()">Comprar produto</button>
         </form>
+        <section class="resposta">
+            <span id="respostaProduto"></span>
+        </section>
     </main>
+    <article>
+        <h4>Carrinho de compras</h4>
+        <p id="carrinhoCompras"></p>
+    </article>
     <script src="./script.js"></script>
 </body>
 </html>
