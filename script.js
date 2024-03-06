@@ -2,7 +2,7 @@ document.getElementById("form").addEventListener("click", function (event) {
     event.preventDefault()
 });
 
-let carrinhoCompras = []
+let data = []
 let total = document.getElementById('total')
 let carrinho = document.getElementById('carrinhoCompras')
 let qtdProdutos = document.getElementById('qtdProdutos')
@@ -66,35 +66,7 @@ function consultarValor() {
         consultarValorBtn.style.display = 'none'
         comprarProdutoBtn.style.display = 'initial'
         consultarOutroProdutoBtn.style.display = 'initial'
-        // Criando uma variável para receber o objeto do produto consultado
-        let produtoConsultadoLS = {
-            nome: produto,
-            valor: valorProduto
-        }
-        // Adicionando ao armazenamento local
-        localStorage.setItem('produto_consultado', JSON.stringify(produtoConsultadoLS))
-        let ultimoProdutoConsultado = localStorage.getItem('produto_consultado')
-        // Criando um array para receber esses dados
-        let data = []
-        // Pegando o item de produtos consultados (que ainda não existe)        
-        let produtosConsultadosStr = localStorage.getItem('produtos_consultados')
         
-        // Se, produtos consultados existir, transformamos ele em um objeto '[{}]' => [{}]
-        if(produtosConsultadosStr){
-            data = JSON.parse(produtosConsultadosStr)
-        }
-        // Fazendo o push para esse array com o dado de produto consultado
-        data.push(produtoConsultadoLS)
-        // Criamos no armazenamento local o item de produtos consultados
-        localStorage.setItem('produtos_consultados', JSON.stringify(data))
-
-        console.log('ultimo produto consultado')
-        console.log(ultimoProdutoConsultado)
-        console.log('-----------------')
-        console.log('Produtos Consultados')
-        data.forEach(i =>{
-            console.log(i)
-        })
     }
 
 }
@@ -105,9 +77,22 @@ function respostaProduto(a) {
 }
 
 function comprarProduto() {
-    let novoProduto = { nome: produto, valor: valorProduto }
-    carrinhoCompras.push(novoProduto)
+    let produtoConsultadoLS = {
+       nome: produto,
+       valor: valorProduto
+   }
 
+   localStorage.setItem('produto_consultado', JSON.stringify(produtoConsultadoLS))
+
+   let produtosConsultadosStr = localStorage.getItem('produtos_consultados')
+
+   if(produtosConsultadosStr){
+       data = JSON.parse(produtosConsultadosStr)
+   }
+
+   data.push(produtoConsultadoLS)
+
+   localStorage.setItem('produtos_consultados', JSON.stringify(data))
 
     imagemProduto.src = ''
     inputValue.value = ''
@@ -120,6 +105,7 @@ function comprarProduto() {
 
     const respostaProduto = document.getElementById('respostaProduto')
     respostaProduto.innerText = ''
+
 }
 
 function consultarOutroProduto() {
@@ -139,9 +125,9 @@ function consultarOutroProduto() {
 function atualizarCarrinho() {
     let conteudoCarrinho = ''
     somaDosValores = 0
-    somaQtdProdutos = carrinhoCompras.length
+    somaQtdProdutos = data.length
 
-    carrinhoCompras.forEach(element => {
+    data.forEach(element => {
         conteudoCarrinho += `${element.nome}: R$ ${element.valor} Kg <br>`
         somaDosValores += parseFloat(element.valor)
     });
@@ -149,6 +135,13 @@ function atualizarCarrinho() {
     carrinho.innerHTML = conteudoCarrinho
     total.innerHTML = `Total: R$ ${somaDosValores.toFixed(2)}`
     qtdProdutos.innerHTML = `Quantidade de produtos: ${somaQtdProdutos}`
+
 }
 
-console.log(carrinhoCompras)
+function limparCarrinho(){
+    localStorage.clear()
+    data = []
+    carrinho.innerHTML = 'Seu carrinho está vazio!'
+    total.innerHTML = 'Total: R$ 0'
+    qtdProdutos.innerHTML = 'Quantidade de produtos: 0'
+}
