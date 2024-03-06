@@ -22,20 +22,30 @@
         </header>
         <main>
             <form class="form" id="form">
-                <label for="">Informe o nome ou código do produto</label>
-                <input type="text" id="inputValue">
-                <button id="consultarValorBtn" onclick='consultarValor()'>Consultar valor</button>
-                <button class="comprar" id="comprarProdutoBtn" onclick="comprarProduto()">Comprar produto</button>
+                <img src="" alt="" id="imagemProduto">
+                <div class="class-form" id="class_form">
+                    <label for="">Informe o nome ou código do produto</label>
+                    <input type="text" id="inputValue">
+                </div>
+                <section class="resposta">
+                    <span id="respostaProduto"></span>
+                </section>
+                <div>
+                    <button id="consultarValorBtn" onclick='consultarValor()'>Consultar valor</button>
+                    <button class="comprar" id="comprarProdutoBtn" onclick="comprarProduto()">Comprar produto</button>
+                    <button class="comprar" id="consultarOutroProdutoBtn" onclick="consultarOutroProduto()">Consultar
+                        outro produto</button>
+                </div>
             </form>
-            <section class="resposta">
-                <span id="respostaProduto"></span>
-            </section>
         </main>
     </div>
     <article>
         <h4>Carrinho de compras</h4>
         <p id="carrinhoCompras">Seu carrinho está vazio!</p>
-        <span id="total">Total: R$ 0</span>
+        <div class="produtosCarrinho">
+            <span id="qtdProdutos">Quantidade de produtos: 0</span>
+            <span id="total">Total: R$ 0</span>
+        </div>
     </article>
     <script src="./script.js"></script>
 </body>
