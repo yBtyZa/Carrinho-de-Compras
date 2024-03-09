@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    display: flex;
+}
+
+.header{
+    width: 83vw;
+    height: 10vh;
+    background-color: rgb(25, 46, 56);
+    color: hsl(0, 0%, 100%);
+    display: flex;
+    align-items: center;
+}
+
+.header h1{
+    margin-left: 50px;
+}
+
+main{
+    width: 83vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: darkslategrey;
+}
+
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(25, 46, 56);
+    width: 17vw;
+    height: 100vh;
+    color: #ffffff;
+}
+article h4{
+    margin-top: 15px
+}
+
+
+article p{
+    margin-top: 15px;
+}
+
+.produtosCarrinho{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 500px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form img{
+    max-width: 300px;
+}
+
+.class-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.class-form label{
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.class-form input{
+    width: 300px;
+    margin-top: 20px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: none;
+}
+
+button{
+    width: 200px;
+    height: 40px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: rgb(0, 162, 255);
+    cursor: pointer;
+}
+
+.comprar{
+    display: none;
+}
+
+.resposta{
+    color: #ffffff;
+    margin-top: 15px;
+}
+
+.carrosel{
+    width: 83vw;
+    overflow: hidden;
+    position: absolute;
+    bottom: 70vh;
+}
+.carroselImg{
+    display: flex;
+    animation: carousel-slide 25s infinite;
+}
+
+@keyframes carousel-slide {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-200%)
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+.carroselImg img{
+    width: 100vw;
+    height: 20vh;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
