@@ -3,20 +3,22 @@ document.getElementById("form").addEventListener("click", function (event) {
 });
 
 let data = []
-let total = document.getElementById('total')
-let carrinho = document.getElementById('carrinhoCompras')
-let qtdProdutos = document.getElementById('qtdProdutos')
 let produto = ''
 let valorProduto = 0
 let imgProduto = ''
 let somaQtdProdutos = 0
 let somaDosValores = 0
+let total = document.getElementById('total')
+let carrinho = document.getElementById('carrinhoCompras')
+let qtdProdutos = document.getElementById('qtdProdutos')
 
 let consultarValorBtn = document.getElementById('consultarValorBtn')
 let comprarProdutoBtn = document.getElementById('comprarProdutoBtn')
 let consultarOutroProdutoBtn = document.getElementById('consultarOutroProdutoBtn')
 let imagemProduto = document.getElementById('imagemProduto')
 let class_form = document.getElementById('class_form')
+
+let carroselImg = document.getElementById('carroselImg')
 
 function consultarValor() {
     let inputValue = document.getElementById('inputValue').value.toLowerCase()
@@ -66,7 +68,7 @@ function consultarValor() {
         consultarValorBtn.style.display = 'none'
         comprarProdutoBtn.style.display = 'initial'
         consultarOutroProdutoBtn.style.display = 'initial'
-        
+
     }
 
 }
@@ -78,21 +80,21 @@ function respostaProduto(a) {
 
 function comprarProduto() {
     let produtoConsultadoLS = {
-       nome: produto,
-       valor: valorProduto
-   }
+        nome: produto,
+        valor: valorProduto
+    }
 
-   localStorage.setItem('produto_consultado', JSON.stringify(produtoConsultadoLS))
+    localStorage.setItem('produto_consultado', JSON.stringify(produtoConsultadoLS))
 
-   let produtosConsultadosStr = localStorage.getItem('produtos_consultados')
+    let produtosConsultadosStr = localStorage.getItem('produtos_consultados')
 
-   if(produtosConsultadosStr){
-       data = JSON.parse(produtosConsultadosStr)
-   }
+    if (produtosConsultadosStr) {
+        data = JSON.parse(produtosConsultadosStr)
+    }
 
-   data.push(produtoConsultadoLS)
+    data.push(produtoConsultadoLS)
 
-   localStorage.setItem('produtos_consultados', JSON.stringify(data))
+    localStorage.setItem('produtos_consultados', JSON.stringify(data))
 
     imagemProduto.src = ''
     inputValue.value = ''
@@ -138,10 +140,16 @@ function atualizarCarrinho() {
 
 }
 
-function limparCarrinho(){
+function limparCarrinho() {
     localStorage.clear()
     data = []
     carrinho.innerHTML = 'Seu carrinho está vazio!'
     total.innerHTML = 'Total: R$ 0'
     qtdProdutos.innerHTML = 'Quantidade de produtos: 0'
 }
+
+let carrossel = ['./assets/img/Morango.png', './assets/img/Laranja.png', './assets/img/Limão.png', './assets/img/Manga.png']
+let index = 0;
+carrossel.forEach(i => {
+    carroselImg.innerHTML += `<img src="${i}">`
+})

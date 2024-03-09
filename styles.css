@@ -95,6 +95,7 @@ button{
     border-radius: 5px;
     color: #ffffff;
     background-color: rgb(0, 162, 255);
+    cursor: pointer;
 }
 
 .comprar{
@@ -104,4 +105,34 @@ button{
 .resposta{
     color: #ffffff;
     margin-top: 15px;
+}
+
+.carrosel{
+    width: 83vw;
+    overflow: hidden;
+    position: absolute;
+    bottom: 70vh;
+}
+.carroselImg{
+    display: flex;
+    animation: carousel-slide 25s infinite;
+}
+
+@keyframes carousel-slide {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-200%)
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+.carroselImg img{
+    width: 100vw;
+    height: 20vh;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
 }
